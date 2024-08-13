@@ -1,0 +1,13 @@
+Updated 04/11/2024
+
+Issue Key	Component	Description
+VER-91668	ResourceManager	If the default resource pool, defined by the DefaultResourcePoolForUsers configuration parameter, was set to a value other than 'general', the user's view incorrectly reported the non-general resource pool as the default pool when the user didn't have that non-general pool set in the profile. This issue has been resolved. The default pool in such cases is now correctly reported as 'general'.
+VER-91794	Execution Engine	In rare situations, a logic error in the execution engine "ABuffer" operator would lead to buffer overruns resulting in undefined behavior.  This issue has been fixed.
+VER-92114	Catalog Engine	Previously, syslog notifiers could cause the node to go down when attached to certain DC tables. This issue has been resolved.
+VER-92125	Optimizer	Queries using the same views repeatedly would sometimes return errors if those views included WITH clauses. The issue has been resolved.
+VER-92166	Procedural Languages	Previously, running certain types of queries inside a stored procedure could cause the database to go down. This has been fixed.
+VER-92288	Sessions	The ALTER USER statement could not set the idle timeout for a user to the default value, which is defined by the DefaultIdleSessionTimeout configuration parameter. If the empty string was specified, the idle timeout was set to unlimited. This issue has been resolved. You can now set the idle timeout to the DefaultIdleSessionTimeout value by specifying 'default' in the ALTER USER statement.
+VER-92660	UI - Management Console	When you upgraded the Management Console from version 12.0.4 to 23.3.0, log in to the Management Console failed and an error message displayed. This issue has been resolved.
+VER-92677	Scrutinize	The scrutinize utility produces a tarball of the data it collects. Previously, scrutinize could fail to create this tarball if it encountered a broken symbolic link. This has been fixed, and the size of the tarball is now logged to scrutinize_collection.log.
+VER-92749	HTTP	Changing the Vertica server certificate triggers an automatic restart of the built-in HTTPS server. When this happened on a busy system, the nodes could sometimes go down. The issue has been fixed.
+VER-92820	Data load / COPY	In COPY, some missing error checks made it so certain invalid input could crash the database. This has been resolved.
